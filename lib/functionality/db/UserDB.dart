@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class UserDB {
-
+final FirebaseAuth _auth = FirebaseAuth.instance;
     _addToFireStore(FirebaseUser user) async {
     DocumentReference doc = await _getCollection(user.uid);
     await doc.setData({
@@ -12,8 +12,7 @@ class UserDB {
     });
   }
    _addToFirebaseAuth(GoogleSignInAuthentication googleAuth) async {
-    final FirebaseAuth _auth = FirebaseAuth.instance;
-
+    
     AuthCredential credential = GoogleAuthProvider.getCredential(
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
@@ -21,7 +20,6 @@ class UserDB {
     final FirebaseUser user =
         (await _auth.signInWithCredential(credential)).user;
     print("signed in " + user.displayName);
-
     return user;
   }
 
@@ -54,7 +52,6 @@ class UserDB {
   }
 
   Future<FirebaseUser> getUser() async {
-    final FirebaseAuth _auth = FirebaseAuth.instance;
     var u = await _auth.currentUser();
     return u;
   }
