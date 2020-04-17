@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quarantine_app/covid_data.dart';
 import 'together_home.dart';
 
 void main() => runApp(MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
           primaryIconTheme: IconThemeData(color: Colors.black),
           primaryTextTheme: TextTheme(title: TextStyle(color: Colors.black)),
           textTheme: TextTheme(title: TextStyle(color: Colors.black))),
-      home: new TogetherHome(),
+      home: new Covid(),
     );
   }
 }

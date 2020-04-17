@@ -1,13 +1,13 @@
 //The full data
-class CovidData {
-  final String country;
-  final Cases cases;
-  final Deaths deaths;
-  final Tests tests;
-  final String day;
-  final String time;
+class Response {
+  String country;
+  Cases cases;
+  Deaths deaths;
+  Tests tests;
+  String day;
+  String time;
 
-  CovidData({
+  Response({
     this.country,
     this.cases,
     this.deaths,
@@ -16,24 +16,25 @@ class CovidData {
     this.time,
   });
 
-  factory CovidData.fromJson(Map<String, dynamic> json) {
-    return CovidData(
-        country: json["country"],
-        cases: json["cases"],
-        deaths: json["deaths"],
-        tests: json["tests"],
-        day: json["day"],
-        time: json["time"]);
+  factory Response.fromJson(Map<String, dynamic> json) {
+    return Response(
+      country: json["country"],
+      cases: Cases.fromJson(json["cases"]),
+      deaths: Deaths.fromJson(json["deaths"]),
+      tests: Tests.fromJson(json["tests"]),
+      day: json["day"],
+      time: json["time"],
+    );
   }
 }
 
 //Data on just the cases
 class Cases {
-  final String newCases;
-  final String activeCases;
-  final String criticalCases;
-  final String recoveredCases;
-  final String totalCases;
+  String newCases;
+  int activeCases;
+  int criticalCases;
+  int recoveredCases;
+  int totalCases;
 
   Cases({
     this.newCases,
@@ -56,8 +57,8 @@ class Cases {
 
 //Data on deaths
 class Deaths {
-  final String newDeaths;
-  final String totalDeaths;
+  String newDeaths;
+  int totalDeaths;
 
   Deaths({
     this.newDeaths,
@@ -74,7 +75,7 @@ class Deaths {
 
 //Data on tests performed
 class Tests {
-  final String totalTests;
+  int totalTests;
 
   Tests({this.totalTests});
 
