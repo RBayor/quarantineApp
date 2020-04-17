@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'together_home.dart';
+import 'package:quarantine_app/Screens/together_home.dart';
 
 void main() => runApp(MyApp());
 

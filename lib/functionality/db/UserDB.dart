@@ -2,17 +2,23 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+final String uSER = "Users";
+final String qCOUNT = 'q_count';
+final String tIMEEPOCH = "time_epoch";
+
 class UserDB {
-final FirebaseAuth _auth = FirebaseAuth.instance;
-    _addToFireStore(FirebaseUser user) async {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  void _addToFireStore(FirebaseUser user) async {
     DocumentReference doc = await _getCollection(user.uid);
     await doc.setData({
-      "q_count": "0.0",
-      "time_epoch": DateTime.now().millisecondsSinceEpoch
+     qCOUNT :"0.0",
+      tIMEEPOCH: DateTime.now().millisecondsSinceEpoch
     });
   }
-   _addToFirebaseAuth(GoogleSignInAuthentication googleAuth) async {
-    
+
+  Future<FirebaseUser> _addToFirebaseAuth(
+      GoogleSignInAuthentication googleAuth) async {
     AuthCredential credential = GoogleAuthProvider.getCredential(
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
@@ -23,7 +29,11 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
     return user;
   }
 
-  
+  Future<DocumentReference> _getCollection(String uid) async {
+    Firestore fs = new Firestore();
+    DocumentReference doc = fs.collection(uSER).document(uid);
+    return doc;
+  }
 
   Future<FirebaseUser> addGoogleUser() async {
     GoogleSignIn googleSignIn = new GoogleSignIn();
@@ -33,14 +43,6 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
     FirebaseUser user = await _addToFirebaseAuth(googleAuth);
     _addToFireStore(user);
     return user;
-  }
-
- 
-
-  Future<DocumentReference> _getCollection(String uid) async {
-    Firestore fs = new Firestore();
-    DocumentReference doc = fs.collection('Users').document(uid);
-    return doc;
   }
 
   Future<FirebaseUser> login() async {

@@ -1,8 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:quarantine_app/functionality/UserPoint.dart';
-import 'package:quarantine_app/functionality/db/UserDB.dart';
 import 'together_body.dart';
 
 class TogetherHome extends StatelessWidget {
