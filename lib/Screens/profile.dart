@@ -6,8 +6,8 @@ class Profile extends StatelessWidget {
     return Scaffold(
         backgroundColor: Color(0xff09031D),
         appBar: AppBar(
-          leading: Icon(Icons.arrow_back_ios),
-          title: Text("Profile"),
+          leading: Icon(Icons.arrow_back_ios, color: Colors.white,),
+          title: Text("Profile", style: TextStyle(color: Colors.white),),
           elevation: 0,
           backgroundColor: Color(0xff09031d),
           actions: <Widget>[
