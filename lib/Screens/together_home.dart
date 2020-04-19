@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'together_body.dart';
+import 'profile.dart';
 
 class TogetherHome extends StatelessWidget {
   final topBar = new AppBar(
@@ -29,6 +30,32 @@ class TogetherHome extends StatelessWidget {
     return Scaffold(
       appBar: topBar,
       body: new TogetherBody(),
+      bottomNavigationBar: new Container(
+        color: Colors.white,
+        height: 50.0,
+        alignment: Alignment.center,
+        child: new BottomAppBar(
+          child: new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              new IconButton(
+                  icon: Icon(
+                    Icons.home,
+                  ),
+                  onPressed: null),
+              new IconButton(
+                  icon: Icon(
+                    Icons.account_box,
+                  ),
+                  onPressed: (){Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Profile()));
+                  }
+              ),
+            ],
+          ),
+        ),
+      ),
+
       // body: new Center(child: new RaisedButton(
       //   onPressed: () async {
       //     UserDB a = new UserDB();

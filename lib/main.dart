@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quarantine_app/Screens/together_home.dart';
+import 'package:quarantine_app/Screens/login.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
           primaryIconTheme: IconThemeData(color: Colors.black),
           primaryTextTheme: TextTheme(title: TextStyle(color: Colors.black)),
           textTheme: TextTheme(title: TextStyle(color: Colors.black))),
-      home: new TogetherHome(),
+      home: new Login (),
     );
   }
 }
