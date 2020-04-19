@@ -150,15 +150,6 @@ class Profile extends StatelessWidget {
                       ),
                       ),
                     ]),
-
-            ),
-
-            Container(
-              height: 44,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 5,
-              ),
             ),
                 ]));
   }
